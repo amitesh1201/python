@@ -14,4 +14,9 @@ while i < int(num):
 
 print numbers 
 
+i=0
+
+while i< len(numbers)
+    print number[i]
+    i = i + 1
 
