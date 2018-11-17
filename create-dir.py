@@ -10,6 +10,7 @@ try:
     # Create the target directory.
     os.mkdir(dir_name)
     print ("Directory ", dir_name , " created ")
-except OSError as e:
-    if e.errno != errno.EEXIST:
+#except OSError as e:
+except FileNotFoundError:
+    #if e.errno != errno.EEXIST:
       print("Directory ", dir_name , " already exist")
