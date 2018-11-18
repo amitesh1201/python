@@ -18,7 +18,7 @@ def file_operation(file_name):
         if edit_status == 'y':
             f = open(file_name, 'a')
             line = input("Enter the line..\n")
-            f.write('\n' + line)
+            f.write('\n' + line + '\n')
             f.close()
         else:
             exit()
@@ -28,7 +28,7 @@ def file_operation(file_name):
         if create_status == "y":
             f = open(file_name, 'w')
             line = input("Enter the line..\n")
-            f.write('\n' + line)
+            f.write('\n' + line + '\n')
             f.close()
         else:
             exit()
