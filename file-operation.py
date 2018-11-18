@@ -4,6 +4,7 @@
 
 import os
 from sys import exit
+from os import path
 
 def check_file_dir(file_name):
     # Check the entered value is file or dir.
@@ -14,9 +15,11 @@ def check_file_dir(file_name):
 def file_operation(file_name):
     # Perform the operation on file.
     if os.path.isfile(file_name):
+        # Check the absolute path of the file.
+        file_path = os.path.abspath(file_name)
         edit_status = input("Do you wish to edit the file.(y/n): ")
         if edit_status == 'y':
-            f = open(file_name, 'a')
+            f = open(file_path, 'a')
             line = input("Enter the line..\n")
             f.write('\n' + line + '\n')
             f.close()
