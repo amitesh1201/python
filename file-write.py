@@ -21,7 +21,8 @@ def create_write_file(file_name):
 
 def read_file(file_name):
     f = open(file_name)
-    print f.read()
+    print (f.read())
+    f.close()
 
 
 ### Main ###
