@@ -10,8 +10,10 @@ def check_file_dir(file_name):
     # Check user enter value is dir or file.
     if os.path.isdir(file_name):
         print("The ", file_name, "is directory")
+        exit()
     elif os.path.isfile(file_name):
         print("The ", file_name, "is file already exist")
+        exit()
 
 def create_file(file_name):
     # Open the file in write mode.
