@@ -14,21 +14,21 @@ def check_file_dir(file_name):
 def file_operation(file_name):
     # Perform the operation on file.
     if os.path.isfile(file_name):
-        edit_status = input("Do you wish to edit the file.(y/n)")
+        edit_status = input("Do you wish to edit the file.(y/n): ")
         if edit_status == 'y':
             f = open(file_name, 'a')
             line = input("Enter the line..\n")
-            f.write(line)
+            f.write('\n' + line)
             f.close()
         else:
             exit()
     else:
         print ("The ", file_name, "not exist.")
-        create_status = input("Do you wish to create file.(y/n)")
+        create_status = input("Do you wish to create file.(y/n): ")
         if create_status == "y":
             f = open(file_name, 'w')
             line = input("Enter the line..\n")
-            f.write(line)
+            f.write('\n' + line)
             f.close()
         else:
             exit()
