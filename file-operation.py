@@ -23,7 +23,7 @@ def file_operation(file_name):
         else:
             exit()
     else:
-        print "The ", file_name, "not exist."
+        print ("The ", file_name, "not exist.")
         create_status = input("Do you wish to create file.(y/n)")
         if create_status == "y":
             f = open(file_name, 'w')
