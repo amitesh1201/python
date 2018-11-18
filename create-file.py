@@ -8,9 +8,9 @@ from sys import exit
 def check_file_dir(file_name):
 
     # Check user enter value is dir or file.
-    if path.isdir(file_name):
+    if os.path.isdir(file_name):
         print("The ", file_name, "is directory")
-    elif path.isfile(file_name):
+    elif os.path.isfile(file_name):
         print("The ", file_name, "is file already exist")
 
 def create_file(file_name):
