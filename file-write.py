@@ -28,6 +28,10 @@ def read_file(file_name):
 ### Main ###
 
 file_name = input("Enter the file name: ")
+if file_name == "":
+    print("The file name should not be empty.")
+    exit()
+
 check_file_dir(file_name)
 create_write_file(file_name)
 read_file(file_name)
