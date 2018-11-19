@@ -10,10 +10,10 @@ from sys import exit
 read_line=""
 
 def file_exist(file_name):
-    if os.path.isdir():
+    if os.path.isdir(file_name):
         print ("This ", file_name, "is direcotry")
         exit()
-    if os.path.isfile():
+    if os.path.isfile(file_name):
        print("The ",file_name, "file exist")
        file_exist=1
     else:
