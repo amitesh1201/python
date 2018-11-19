@@ -36,8 +36,8 @@ def file_operation(read_file_name,write_file_name):
        read_file(read_file_name)
        file_exist(write_file_name)
        if file_exist_status == 1:
-          print("The ", write_file_name, )
-          file_status = input("file exist. Do you wish to over write the file(y/n): ")
+          print("The ", write_file_name, "file exist.")
+          file_status = input("Do you wish to over write the file(y/n): ")
           if file_status == 'y':
              write_file(write_file_name)
              print("The ",write_file_name, "file has been over written")
