@@ -49,13 +49,13 @@ def menu():
             result = addition(num1,num2)
             print ("The addition of ", num1 ,"+",num2,"is",result)
         elif menu_condition == 2:
-            substration(num1,num2)
+            result = substration(num1,num2)
             print ("The substration of ", num1, "-", num2, "is", result)
         elif menu_condition == 3:
-            multiplication(num1,num2)
+            result = multiplication(num1,num2)
             print ("The multiplication of ", num1, "*", num2, "is", result)
         elif menu_condition == 4:
-            devision(num1,num2)
+            result = devision(num1,num2)
             print ("The devision of ", num1, "/", num2, "is", result)
         else:
             print("Select choice from the menu")
