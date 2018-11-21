@@ -29,7 +29,7 @@ def devision(num1,num2):
 
 def menu():
     menu_condition = 0
-    while menu_condition == 0:
+    while menu_condition == '0':
         print("Select the choice for operations")
         print("Select 1 for addition")
         print("select 2 for substration")
@@ -38,13 +38,13 @@ def menu():
         print("select 5 for exit")
 
 
-        menu_condition = input("Select the choice: ")
+        menu_condition = int(input("Select the choice: "))
 
         if menu_condition == 5:
             exit()
 
-        num1 = input("Enter num1: ")
-        num2 = input("Enter num2: ")
+        num1 = int(input("Enter num1: "))
+        num2 = int(input("Enter num2: "))
         if menu_condition == 1:
             result = addition(num1,num2)
             print ("The addition of ", num1 ,"+",num2,"is",result)
