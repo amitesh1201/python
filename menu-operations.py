@@ -28,6 +28,7 @@ def devision(num1,num2):
     return result
 
 def menu():
+    menu_condition = 0
     while menu_condition == 0:
         print("Select the choice for operations")
         print("Select 1 for addition")
@@ -59,5 +60,5 @@ def menu():
 
 
 ### Main ###
-menu_condition=0
+
 menu()
