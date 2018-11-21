@@ -37,13 +37,14 @@ def menu():
         print("select 4 for devision")
         print("select 5 for exit")
 
+
+        menu_condition = input("Select the choice: ")
+
         if menu_condition == 5:
             exit()
 
-        menu_condition = input("Select the choice: ")
         num1 = input("Enter num1: ")
         num2 = input("Enter num2: ")
-
         if menu_condition == 1:
             result = addition(num1,num2)
             print ("The addition of ", num1 ,"+",num2,"is",result)
