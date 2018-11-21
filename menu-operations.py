@@ -37,6 +37,9 @@ def menu():
         print("select 4 for devision")
         print("select 5 for exit")
 
+        if menu_condition == 5:
+            exit()
+
         menu_condition = input("Select the choice: ")
         num1 = input("Enter num1: ")
         num2 = input("Enter num2: ")
@@ -53,8 +56,6 @@ def menu():
         elif menu_condition == 4:
             devision(num1,num2)
             print ("The devision of ", num1, "/", num2, "is", result)
-        elif menu_condition == 5:
-            exit()
         else:
             print("Select choice from the menu")
 
