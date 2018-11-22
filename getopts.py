@@ -11,12 +11,12 @@ def main(argv):
     inputfile = ''
     outputfile = ''
     try:
-        opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+        opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile=","help"])
     except getopt.GetoptError:
         info_msg()
         sys.exit(2)
     for opt, arg in opts:
-        if opt == '-h':
+        if opt in ("-h","--help"):
             info_msg()
             sys.exit()
         elif opt in ("-i", "--ifile"):
