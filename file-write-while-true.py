@@ -21,33 +21,37 @@ def check_input(ifile):
 # Check the file exist or not.
 def file_write(ifile):
      if file_status == 0:
-         print ("The ",ifile,"file created.")
-         ofile = open(ifile,'w')
-         line = input("Enter lines\n")
-         while (True):
-             ofile.write(ifile)
-             line = input()
+         try:
+           print ("The ",ifile,"file created.")
+           ofile = open(ifile,'w')
+           line = input("Enter lines\n")
+           while (True):
+               ofile.write(ifile)
+               line = input()
+         finally:
+             print ("The file", ifile,"successfully written")
+             ofile.close()
 
-         ofile.close()
      else:
-        print("The ", ifile,"exist")
-        flag = input("Do you wish to over write (a/y/n): ")
-        if flag == "a":
-            ofile = open(ifile, 'a')
-            line = input("Enter lines\n")
-            while (True):
-                ofile.write(ifile)
-                line = input()
-            ofile.close()
-        elif flag == "y":
-            ofile = open(ifile, 'w')
-            line = input("Enter lines\n")
-            while (True):
-                ofile.write(ifile)
-                line = input()
-            ofile.close()
-        else:
-            exit()
+        try:
+          print("The ", ifile,"exist")
+          flag = input("Do you wish to over write (a/y/n): ")
+          if flag == "a":
+             ofile = open(ifile, 'a')
+             line = input("Enter lines\n")
+             while (True):
+                 ofile.write(ifile)
+                 line = input()
+          elif flag == "y":
+             ofile = open(ifile, 'w')
+             line = input("Enter lines\n")
+             while (True):
+                 ofile.write(ifile)
+                 line = input()
+          else:
+             exit()
+        finally:
+          ofile.close()
 
 #### Main ####
 
