@@ -5,17 +5,17 @@
 import os
 from sys import exit
 
-global file_status
 
 # Check the input object is dir or file.
 def check_input(ifile):
+    global file_status
     if os.path.isdir(ifile):
         print("The ", ifile, "is directory")
         exit()
     elif os.path.isfile(ifile):
           file_status = 1
     else:
-        file_status = 0
+          file_status = 0
 
 # Check the file exist or not.
 def file_write(ifile):
