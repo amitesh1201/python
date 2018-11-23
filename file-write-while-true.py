@@ -5,7 +5,7 @@
 import os
 from sys import exit
 
-file_status = 0
+global file_status
 
 # Check the input object is dir or file.
 def check_input(ifile):
