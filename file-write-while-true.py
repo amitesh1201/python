@@ -1,6 +1,7 @@
 #!/usr/bin/python3.6
 
 # This script writes the continuous to the file.
+# This script is ready but need to handle the keyboard interrupt
 
 import os
 from sys import exit
@@ -26,6 +27,7 @@ def file_write(ifile):
          while (True):
              ofile.write(ifile)
              line = input()
+
          ofile.close()
      else:
         print("The ", ifile,"exist")
