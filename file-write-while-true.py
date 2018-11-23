@@ -20,7 +20,8 @@ def check_input(ifile):
 # Check the file exist or not.
 def file_write(ifile):
      if file_status == 0:
-         ofile = open(ifile,'wb')
+         print ("The ",ifile,"file created.")
+         ofile = open(ifile,'w')
          line = input("Enter lines\n")
          while (True):
              ofile.write(ifile)
