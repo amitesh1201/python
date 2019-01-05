@@ -6,12 +6,17 @@ import sys, getopt
 
 def info_msg():
     print ("getopts.py -i <inputfile -o outputfile>")
+    exit(1)
 
 def main(argv):
     inputfile = ''
     outputfile = ''
     try:
         opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile=","help"])
+        print("opts", opts)
+        print("args",args)
+        if not opts:
+            info_msg()
     except getopt.GetoptError:
         info_msg()
         sys.exit(2)
