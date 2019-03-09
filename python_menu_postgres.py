@@ -8,6 +8,11 @@ import psycopg2 as pg
 import pandas as pd
 from sqlalchemy import create_engine
 
+def connect_db(host_name,db_name,user_name,user_password):
+
+    #conn = pg.connect(host='localhost', dbname=db_name, user='postgres', password='redhat')
+    conn = pg.connect(host='$host_name', dbname=$db_name, user='$user_name', password='$user_password')
+
 def show_databases():
     print("1. Show databases")
 
@@ -23,7 +28,7 @@ def menu():
         print ("Option 2")
         print ("Option 3")
 
-        opt = input("Select the option: ")
+        opt = int(input("Select the option: "))
         
         if opt == 1:
             show_databases() 
@@ -36,5 +41,7 @@ def menu():
            exit() 
            
 
-menu()         
+#menu()         
+connect_db
+
 
