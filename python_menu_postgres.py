@@ -1,6 +1,5 @@
 #!/usr/local/bin/python3.7
 
-:set number
 
 import os
 from sys import exit
@@ -10,13 +9,26 @@ import psycopg2 as pg
 import pandas as pd
 from sqlalchemy import create_engine
 
-def connect_db(host_name,db_name,user_name,user_password):
+host_name = 'localhost'
+db_name = 'testdb'
+user_name = 'postgres'
+user_password = 'redhat'
 
-    #conn = pg.connect(host='localhost', dbname=db_name, user='postgres', password='redhat')
-    conn = pg.connect(host='$host_name', dbname=$db_name, user='$user_name', password='$user_password')
+def connect_db(host_name,db_name,user_name,user_password):
+#def connect_db():
+
+#    conn = pg.connect(host='localhost', dbname='testdb', user='postgres', password='redhat')
+    conn = pg.connect(host=host_name, dbname=db_name, user=user_name, password=user_password)
+    #show_databases(conn)
+    print ("connected")
+    return conn
 
 def show_databases():
+     
     print("1. Show databases")
+    #table_data = pd.read_sql('SELECT datname FROM pg_catalog.pg_database',conn)
+    table_data = pd.read_sql('SELECT datname FROM pg_catalog.pg_database',connect_db(host_name,db_name,user_name,user_password))
+    print(table_data)
 
 
 def menu():
@@ -44,6 +56,7 @@ def menu():
            
 
 #menu()         
-connect_db
-
+#connect_db()
+#connect_db(host_name,db_name,user_name,user_password)
+show_databases()
 
