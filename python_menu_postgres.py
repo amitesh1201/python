@@ -1,5 +1,7 @@
 #!/usr/local/bin/python3.7
 
+:set number
+
 import os
 from sys import exit
 import csv
