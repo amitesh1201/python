@@ -18,20 +18,45 @@ user_password = 'redhat'
 #    conn = pg.connect(host='localhost', dbname='testdb', user='postgres', password='redhat')
 #    show_databases(conn)
 
-def connect_db(host_name,db_name,user_name,user_password):
+def get_hostname():
+    host_name = input("Enter DB hostname to connect: ")  
+    return host_name
+
+def get_dbname():
+    db_name = input("Enter database name to connect: ")
+    return db_name
+
+def get_username():
+    user_name = input("Enter database username to connect: ")
+    return user_name
+
+def get_password():
+    user_password = input("Enter user password to connect: ")
+    return user_password
+
+#def connect_db(host_name,db_name,user_name,user_password):
+def connect_db():
     # Connect the database
+    
+    host_name = get_hostname()
+    db_name = get_dbname()
+    user_name = get_username()
+    user_password = get_password()
+
     conn = pg.connect(host=host_name, dbname=db_name, user=user_name, password=user_password)
     print ("Database connected")
     print("====================")
     return conn
 
 def show_databases():
-     
-    conn = connect_db(host_name,db_name,user_name,user_password)
+    # Return the connection of database and fetch records from the pg_catalog.pg_database table. 
+    #conn = connect_db(host_name,db_name,user_name,user_password)
+    conn = connect_db()
     cur = conn.cursor()
     cur.execute('SELECT datname FROM pg_catalog.pg_database')
     table_data = cur.fetchall()
     print("Database: ")
+    # Display the data in single coloumn.
     for td in table_data:
         print(td[0])
     conn.close()
