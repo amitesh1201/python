@@ -8,15 +8,12 @@ import fnmatch
 import psycopg2 as pg
 import pandas as pd
 from sqlalchemy import create_engine
+import getpass
 
 host_name = 'localhost'
 db_name = 'testdb'
 user_name = 'postgres'
 user_password = 'redhat'
-
-#def connect_db():
-#    conn = pg.connect(host='localhost', dbname='testdb', user='postgres', password='redhat')
-#    show_databases(conn)
 
 def get_hostname():
     host_name = input("Enter DB hostname to connect: ")  
@@ -31,18 +28,18 @@ def get_username():
     return user_name
 
 def get_password():
-    user_password = input("Enter user password to connect: ")
+    user_password = getpass.getpass("Enter user password to connect: ")
     return user_password
 
-#def connect_db(host_name,db_name,user_name,user_password):
 def connect_db():
-    # Connect the database
-    
+    # Take input hostname, dbname, username and password from user
+
     host_name = get_hostname()
     db_name = get_dbname()
     user_name = get_username()
     user_password = get_password()
 
+    # Connect the database
     conn = pg.connect(host=host_name, dbname=db_name, user=user_name, password=user_password)
     print ("Database connected")
     print("====================")
@@ -68,6 +65,8 @@ def show_databases():
 
 
 def menu():
+    # Display the database operations menu
+
     print ("This is menu function")
 
     menu_option = True
@@ -91,8 +90,6 @@ def menu():
            exit() 
            
 
+######Main Section######
 menu()         
-#connect_db()
-#connect_db(host_name,db_name,user_name,user_password)
-#show_databases()
 
