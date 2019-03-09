@@ -96,7 +96,6 @@ def show_tables():
         print(td[0])
 
     
-
 def menu():
     # Display the database operations menu
 
