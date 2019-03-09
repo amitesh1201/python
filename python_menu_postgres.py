@@ -44,23 +44,12 @@ def get_sql_result(sql_query):
     #conn = connect_db(host_name,db_name,user_name,user_password)
     conn = connect_db()
     cur = conn.cursor()
-    #cur.execute('SELECT datname FROM pg_catalog.pg_database')
     cur.execute(sql_query)
     db_data = cur.fetchall()
     conn.close()
     return db_data
-    #table_data = pd.read_sql('SELECT datname FROM pg_catalog.pg_database',conn)
-    #table_data = pd.reconnect_db(host_name,db_name,user_name,user_password)ad_sql('SELECT datname FROM pg_catalog.pg_database',connect_db(host_name,db_name,user_name,user_password))
-    #td = table_data.set_index("datname", drop = False)
-    #print(table_data)
-    #print(table_data.Name.to_string(index=False))
 
 def connect_db():
-
-    #host_name = get_hostname()
-    #db_name = get_dbname()
-    #user_name = get_username()
-    #user_password = get_password()
 
     # Connect the database
     conn = pg.connect(host=host_name, dbname=db_name, user=user_name, password=user_password)
@@ -85,13 +74,13 @@ def show_tables():
     # Display the tables of selected database.
     
     flag = 0
+
     # If the entered database is not exist then exit the script.
     db_name = get_dbname()
     host_name = get_hostname()
     user_name = get_username()
     user_password = get_password()
     db_data = get_sql_result(get_list_dbs())
-    #print(db_data)
     for dbd in db_data:
         if dbd[0] == db_name:
             flag = 1
