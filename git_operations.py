@@ -1,7 +1,7 @@
 #!/usr/bin/python3.6
 
 # This file performs the git operations
-# like status, add, commit, push
+# like status, add, commit, push, checkout, pull
 
 import sys, getopt, os
 
@@ -12,7 +12,7 @@ def usage():
     print("-m,--commit <args>: Commit the file")
     print("-p,--push:          Push the file to the git branch")
 
-def get_branch():
+def get_status():
     os.system("git status")
 
 
@@ -35,7 +35,7 @@ def get_branch():
 
 def main(argv):
     try:
-        opts, argv =getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
+        opts, argv = getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
         if not opts:
             usage()
     except getopt.GetoptError:
@@ -43,10 +43,12 @@ def main(argv):
         sys.exit(2)
     for opt, argv in opts:
         if opt in ("-s","--status"):
-            get_branch()
+            get_status()
         elif opt in ("-a","--add"):
-            if not argv:
-                add_file(argv)
+            file_name = argv
+            if file_name:
+                print(file_name)
+                add_file(file_name)
         elif opt in ("-m","--commit"):
             if not argv:
                 commit_file(argv)
@@ -61,3 +63,4 @@ def main(argv):
 
 if __name__ == '__main__':
    main(sys.argv[1:])
+
