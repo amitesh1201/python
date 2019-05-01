@@ -7,14 +7,14 @@ import sys, getopt, os
 
 def usage():
     print("Check the following options")
-    print("-s,--status:        Display the status")
-    print("-a,--add <args>:    Add newly created file to the git")
-    print("-m,--commit <args>: Commit the file")
-    print("-p,--push:          Push the file to the git branch")
+    print("-s,--status:                  Display the status")
+    print("-a,--add <file_name>:         Add newly created file to the git")
+    print("-m,--commit <args>:           Commit the file")
+    print("-p,--push:                    Push the file to the git branch")
+    print("-c,--check-out <brach_name>:  Changed the branch")
 
 def get_status():
     os.system("git status")
-
 
 def add_file(file_name):
     # Add to check the file exist or not
@@ -35,9 +35,13 @@ def push_file():
 def get_branch():
     os.system("git branch")
 
+def checkout_branch(brach_name):
+    print("git checkout " + brach_name)
+    os.system("git checkout " + brach_name)
+
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
+        opts, args = getopt.getopt(argv,"sa:m:pbc:,h",["status","add=","commit=","push","branch","check-out","help"])
         #print("opts", opts)
         #print("args", args)
         if not opts:
@@ -66,6 +70,12 @@ def main(argv):
             push_file()
         elif opt in ("-b","--branch"):
             get_branch()
+        elif opt in ("-c","--check-out"):
+            if arg:
+               checkout_branch(arg)
+            else:
+                usage()
+                sys.exit(2)
         elif opt in ("-h","--help"):
             usage()
 
