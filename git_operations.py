@@ -19,13 +19,15 @@ def get_status():
 def add_file(file_name):
     # Add to check the file exist or not
     if os.path.isfile(file_name):
-        os.system("git add", file_name)
+        os.system("git add " + file_name)
+        print("git add " + file_name)
     else:
         print("The file", file_name, "not exit")
         sys.exit(2)
 
 def commit_file(msg):
-    os.system("git commit -m", msg)
+    print("git commit -m " + '"msg"')
+    os.system("git commit -m " + '"msg"')
 
 def push_file():
    os.system("git push")
@@ -35,23 +37,27 @@ def get_branch():
 
 def main(argv):
     try:
-        opts, argv = getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
+        opts, args = getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
+        #opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile=", "help"])
+        print("opts", opts)
+        print("args", args)
         if not opts:
             usage()
     except getopt.GetoptError:
         usage()
         sys.exit(2)
-    for opt, argv in opts:
+    for opt, arg in opts:
         if opt in ("-s","--status"):
             get_status()
         elif opt in ("-a","--add"):
-            file_name = argv
+            file_name = arg
             if file_name:
                 print(file_name)
                 add_file(file_name)
         elif opt in ("-m","--commit"):
-            if not argv:
-                commit_file(argv)
+            if arg:
+                print(arg)
+                commit_file(arg)
         elif opt in ("-p","--push"):
             push_file()
         elif opt in ("-b","--branch"):
@@ -62,5 +68,8 @@ def main(argv):
 
 
 if __name__ == '__main__':
-   main(sys.argv[1:])
+    try:
+        main(sys.argv[1:])
+    except OSError as err:
+      print("OS error: {0}".format(err))
 
