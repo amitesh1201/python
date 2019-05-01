@@ -15,16 +15,22 @@ def get_branch():
     os.system("git status")
 
 
-#def add_file():
+def add_file(file_name):
+    # Add to check the file exist or not
+    os.system("git add", file_name)
 
-#def commit_file():
+def commit_file(msg):
+    os.system("git commit -m", msg)
 
-#def push_file():
+def push_file():
+   os.system("git push")
 
+def get_branch():
+    os.system("git branch")
 
 def main(argv):
     try:
-        opts, argv =getopt.getopt(argv,"sa:m:p,h",["status","add=","commit=","push","help"])
+        opts, argv =getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
         if not opts:
             usage()
     except getopt.GetoptError:
@@ -34,8 +40,15 @@ def main(argv):
         if opt in ("-s","--status"):
             get_branch()
         elif opt in ("-a","--add"):
-
-
+          if not argv:
+              add_file(argv)
+        elif opt in ("-m","--commit"):
+          if not argv:
+              commit_file(argv)
+        elif opt in ("-p","--push"):
+          push_file()
+        elif opt in ("-b","--branch"):
+          get_branch()
 
 
 
