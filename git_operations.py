@@ -6,18 +6,18 @@
 import sys, getopt, os
 
 def usage():
-    print("Check the following options")
+    print("Check the following options\n")
     print("-s,--status:                  Display the status")
     print("-a,--add <file_name>:         Add newly created file to the git")
     print("-m,--commit <args>:           Commit the file")
     print("-p,--push:                    Push the file to the git branch")
     print("-c,--check-out <brach_name>:  Changed the branch")
+    print("-l,--pull:                    Pull data")
 
 def get_status():
     os.system("git status")
 
 def add_file(file_name):
-    # Add to check the file exist or not
     if os.path.isfile(file_name):
         os.system("git add " + file_name)
         print("git add " + file_name)
@@ -39,9 +39,12 @@ def checkout_branch(brach_name):
     print("git checkout " + brach_name)
     os.system("git checkout " + brach_name)
 
+def pull_data():
+    os.system("git pull")
+
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"sa:m:pbc:,h",["status","add=","commit=","push","branch","check-out","help"])
+        opts, args = getopt.getopt(argv,"sa:m:pbc:l,h",["status","add=","commit=","push","branch","check-out","pull","help"])
         #print("opts", opts)
         #print("args", args)
         if not opts:
@@ -76,6 +79,8 @@ def main(argv):
             else:
                 usage()
                 sys.exit(2)
+        elif opt in ("-l","pull"):
+            pull_data()
         elif opt in ("-h","--help"):
             usage()
 
