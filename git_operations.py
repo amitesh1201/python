@@ -38,7 +38,6 @@ def get_branch():
 def main(argv):
     try:
         opts, args = getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
-        #opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile=", "help"])
         print("opts", opts)
         print("args", args)
         if not opts:
@@ -52,12 +51,17 @@ def main(argv):
         elif opt in ("-a","--add"):
             file_name = arg
             if file_name:
-                print(file_name)
                 add_file(file_name)
+            else:
+                usage()
+                sys.exit(2)
         elif opt in ("-m","--commit"):
             if arg:
                 print(arg)
                 commit_file(arg)
+            else:
+                usage()
+                sys.exit(2)
         elif opt in ("-p","--push"):
             push_file()
         elif opt in ("-b","--branch"):
