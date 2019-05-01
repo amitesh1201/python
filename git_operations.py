@@ -38,8 +38,8 @@ def get_branch():
 def main(argv):
     try:
         opts, args = getopt.getopt(argv,"sa:m:pb,h",["status","add=","commit=","push","branch","help"])
-        print("opts", opts)
-        print("args", args)
+        #print("opts", opts)
+        #print("args", args)
         if not opts:
             usage()
     except getopt.GetoptError:
