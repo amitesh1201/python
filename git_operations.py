@@ -1,6 +1,7 @@
 #!/usr/bin/python3.6
 
-# This file performs the git operations.
+# This file performs the git operations
+# like status, add, commit, push
 
 import sys, getopt, os
 
@@ -17,7 +18,11 @@ def get_branch():
 
 def add_file(file_name):
     # Add to check the file exist or not
-    os.system("git add", file_name)
+    if os.path.isfile(file_name):
+        os.system("git add", file_name)
+    else:
+        print("The file", file_name, "not exit")
+        sys.exit(2)
 
 def commit_file(msg):
     os.system("git commit -m", msg)
@@ -40,15 +45,17 @@ def main(argv):
         if opt in ("-s","--status"):
             get_branch()
         elif opt in ("-a","--add"):
-          if not argv:
-              add_file(argv)
+            if not argv:
+                add_file(argv)
         elif opt in ("-m","--commit"):
-          if not argv:
-              commit_file(argv)
+            if not argv:
+                commit_file(argv)
         elif opt in ("-p","--push"):
-          push_file()
+            push_file()
         elif opt in ("-b","--branch"):
-          get_branch()
+            get_branch()
+        elif opt in ("-h","--help"):
+            usage()
 
 
 
