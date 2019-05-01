@@ -26,8 +26,8 @@ def add_file(file_name):
         sys.exit(2)
 
 def commit_file(msg):
-    print("git commit -m " + '"msg"')
-    os.system("git commit -m " + '"msg"')
+    print("git commit -m " + '"{}"'.format(msg))
+    os.system("git commit -m " + '"{}"'.format(msg))
 
 def push_file():
    os.system("git push")
