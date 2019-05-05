@@ -21,6 +21,9 @@ def add_file(file_name):
     if os.path.isfile(file_name):
         os.system("git add " + file_name)
         print("git add " + file_name)
+    if os.path.isdir(file_name):
+        os.system("git add " + file_name)
+        print("git add " + file_name)
     else:
         print("The file", file_name, "not exit")
         sys.exit(2)
