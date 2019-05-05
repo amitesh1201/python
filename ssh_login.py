@@ -18,6 +18,7 @@ def main(argv):
         opts, args = getopt.getopt(argv,"u:f:s:h")
         if not opts:
             usage()
+            exit(2)
     except getopt.GetoptError:
         usage()
         sys.exit(2)
