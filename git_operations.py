@@ -13,9 +13,21 @@ def usage():
     print("-p,--push:                    Push the file to the git branch")
     print("-c,--check-out <brach_name>:  Changed the branch")
     print("-l,--pull:                    Pull data")
+    print("-r,--rm:                      Removed file or directory")
 
 def get_status():
     os.system("git status")
+
+def remove_file_dir(file_name):
+    if os.path.isfile(file_name):
+        os.system("git rm " + file_name)
+        print("git rm " + file_name)
+    if os.path.isdir(file_name):
+        os.system("git rm " + file_name)
+        print("git rm " + file_name)
+    else:
+        print("The file", file_name, "not exit")
+        sys.exit(2)
 
 def add_file(file_name):
     if os.path.isfile(file_name):
@@ -47,7 +59,7 @@ def pull_data():
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"sa:m:pbc:l,h",["status","add=","commit=","push","branch","check-out","pull","help"])
+        opts, args = getopt.getopt(argv,"sa:m:pbc:lr:,h",["status","add=","commit=","push","branch","check-out","pull","rm","help"])
         #print("opts", opts)
         #print("args", args)
         if not opts:
@@ -82,8 +94,11 @@ def main(argv):
             else:
                 usage()
                 sys.exit(2)
-        elif opt in ("-l","pull"):
+        elif opt in ("-l","--pull"):
             pull_data()
+        elif opt in ("-r", "--rm"):
+            file_name = arg
+            remove_file_dir(file_name)
         elif opt in ("-h","--help"):
             usage()
 
