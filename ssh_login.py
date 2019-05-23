@@ -32,11 +32,13 @@ def main(argv):
                 usage()
                 exit (2)
         if opt in ("-f"):
+            user_name = "csadmin"
             if not arg:
                 usage()
                 exit (2)
             user_ip = "192.168.50."+arg
         elif opt in ("-s"):
+            user_name = "csadmin"
             if not arg:
                 usage()
                 exit (2)
