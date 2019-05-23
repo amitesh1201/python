@@ -22,7 +22,7 @@ def remove_file_dir(file_name):
     if os.path.isfile(file_name):
         os.system("git rm " + file_name)
         print("git rm " + file_name)
-    if os.path.isdir(file_name):
+    elif os.path.isdir(file_name):
         os.system("git rm " + file_name)
         print("git rm " + file_name)
     else:
@@ -33,7 +33,7 @@ def add_file(file_name):
     if os.path.isfile(file_name):
         os.system("git add " + file_name)
         print("git add " + file_name)
-    if os.path.isdir(file_name):
+    elif os.path.isdir(file_name):
         os.system("git add " + file_name)
         print("git add " + file_name)
     else:
