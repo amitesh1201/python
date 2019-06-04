@@ -9,7 +9,7 @@ def usage():
     print("-u: Enter user name to login")
     print("-f: Login to 192.168.50.x")
     print("-s: Login to 192.168.60.x")
-    print("-a:  Enter any IP to login")
+    print("-a: Enter any IP to login")
 
 def login(user_name,user_ip):
     if not user_name or not user_ip:
