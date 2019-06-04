@@ -6,10 +6,10 @@ import sys, getopt, os
 
 def usage():
     print("Use following option to ssh")
-    print("-s: Enter user name to login")
+    print("-u: Enter user name to login")
     print("-f: Login to 192.168.50.x")
     print("-s: Login to 192.168.60.x")
-    print("-a:  Enter any IP to login")
+    print("-a: Enter any IP to login")
 
 def login(user_name,user_ip):
     if not user_name or not user_ip:
@@ -18,6 +18,7 @@ def login(user_name,user_ip):
 
 def main(argv):
     try:
+        user_name = "csadmin"
         opts, args = getopt.getopt(argv,"u:f:s:a:h")
         if not opts:
             usage()
@@ -27,18 +28,16 @@ def main(argv):
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-u"):
-            user_name = arg
-            if not user_name:
+            if not arg:
                 usage()
                 sys.exit(2)
+            user_name = arg
         if opt in ("-f"):
-            user_name = "csadmin"
             if not arg:
                 usage()
                 sys.exit(2)
             user_ip = "192.168.50."+arg
         elif opt in ("-s"):
-            user_name = "csadmin"
             if not arg:
                 usage()
                 sys.exit(2)
