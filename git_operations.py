@@ -11,7 +11,8 @@ def usage():
     print("-a,--add <file_name>:         Add newly created file to the git")
     print("-m,--commit <args>:           Commit the file")
     print("-p,--push:                    Push the file to the git branch")
-    print("-c,--check-out <brach_name>:  Changed the branch")
+    print("-c,--check-out <brach_name>:  Change the branch")
+    print("-C,--clone:                   Clone the repo")
     print("-l,--pull:                    Pull data")
     print("-r,--rm:                      Removed file or directory")
 
@@ -54,12 +55,15 @@ def checkout_branch(brach_name):
     print("git checkout " + brach_name)
     os.system("git checkout " + brach_name)
 
+def clone_repo(repo_name):
+    os.system("git clone " + repo_name)
+
 def pull_data():
     os.system("git pull")
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"sa:m:pbc:lr:,h",["status","add=","commit=","push","branch","check-out","pull","rm","help"])
+        opts, args = getopt.getopt(argv,"sa:m:pbc:C:lr:,h",["status","add=","commit=","push","branch","check-out","clone","pull","rm","help"])
         #print("opts", opts)
         #print("args", args)
         if not opts:
@@ -91,6 +95,14 @@ def main(argv):
         elif opt in ("-c","--check-out"):
             if arg:
                checkout_branch(arg)
+            else:
+                usage()
+                sys.exit(2)
+        elif opt in ("-C","--clone"):
+            print(opt)
+            print(arg)
+            if arg:
+                clone_repo(arg)
             else:
                 usage()
                 sys.exit(2)
